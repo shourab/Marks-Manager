@@ -1,0 +1,66 @@
+﻿@using StudentResultHistoryFinder.Models
+
+@{
+    List<Coursesrb> courses = ViewBag.courses;
+    List<StudentMarks> aList = ViewBag.list;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AllstudentResult</title>
+</head>
+<body>
+
+    <br>
+    <br>
+    <br>
+<br>
+<br>
+<br>
+    <br>
+<div>
+    <form>
+        Batch:<br>
+        <input type="text" name="batch"><br/>
+        Courseid:<br>
+        <select name="courseId">
+            <option>--Select---</option>
+            @{
+                foreach (var course in courses)
+                {
+                    <option value="@course.courseid">@course.coursecode</option>
+                }
+            }
+        </select><br/><br/>
+        <input type="submit" value="Submit">
+    </form><br/>
+
+    <table border="1">
+        <th>StudentId </th>
+        <th>CT1</th>
+        <th>CT2</th>
+        <th>CT3</th>
+        <th>CT4</th>
+        <th>Attendance</th>
+
+        @{
+            foreach (var i in aList)
+            {
+                <tr>
+                    <td>@i.StudentId </td>
+                    <td>@i.CT1</td>
+                    <td>@i.CT2</td>
+                    <td>@i.CT3</td>
+                    <td>@i.CT4</td>
+                    <td>@i.Attendance</td>
+
+                </tr>
+            }
+        }
+    </table>
+</div>
+</body>
+</html>

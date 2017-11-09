@@ -1,0 +1,63 @@
+﻿@using StudentResultHistoryFinder.Models
+
+
+@{
+    
+    List<Studentsinfosrb> students = ViewBag.students;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Students</title>
+</head>
+<body>
+    <br>
+    <br>
+    <br>
+<br>
+<br>
+    <br>
+<div>
+    <table border="1">
+        <tr>
+            <th>StudentID</th>
+            <th>Marks for @ViewBag.marksfor</th>
+        </tr>
+        @{
+            foreach (var i in students)
+            {
+
+                <tr>
+                    <form action="/ResultInputsrb/Students" method="POST">
+                        <td>
+                            <input type="hidden" name="StudentId" value="@i.StudentId">
+                            <input type="hidden" name="courseid" value="@i.CourseID">
+                            <input type="hidden" name="Marksfor" value="@ViewBag.marksfor">
+                            <input type="hidden" name="batch" value="@ViewBag.batch">
+
+                            @i.StudentId
+
+                        </td>
+                        <td> Marks:<input type="text" name="Marks"><input type="submit" value="Submit"></td>
+                        <td></td>
+
+
+                    </form>
+                </tr>
+
+            }
+
+        }
+    </table>
+    <h1>
+        @if (ViewBag.Message != null)
+        {
+            @ViewBag.Message
+        }
+    </h1>
+</div>
+</body>
+</html>

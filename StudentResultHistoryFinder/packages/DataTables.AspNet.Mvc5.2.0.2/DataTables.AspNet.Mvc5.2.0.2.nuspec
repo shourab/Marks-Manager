@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>DataTables.AspNet.Mvc5</id>
+    <version>2.0.2</version>
+    <title>DataTables.AspNet.Mvc5</title>
+    <authors>Anderson Matos</authors>
+    <owners>Anderson Matos</owners>
+    <licenseUrl>https://raw.githubusercontent.com/ALMMa/datatables.aspnet/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/ALMMa/datatables.aspnet</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>MVC5 implementation for DataTables.AspNet.</description>
+    <summary>MVC5 implementation for DataTables.AspNet.</summary>
+    <releaseNotes>Updated dependencies and framework.</releaseNotes>
+    <copyright>2014-2016 Anderson Matos (MIT License)</copyright>
+    <language>en-US</language>
+    <tags>DataTables DataTables.Mvc DataTables.AspNet Mvc Mvc5</tags>
+    <dependencies>
+      <group targetFramework=".NETFramework4.5">
+        <dependency id="Microsoft.AspNet.Mvc" version="5.2.3" />
+        <dependency id="DataTables.AspNet.Core" version="2.0.2" />
+        <dependency id="Newtonsoft.Json" version="9.0.1" />
+      </group>
+    </dependencies>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="System.Web" targetFramework=".NETFramework4.5" />
+    </frameworkAssemblies>
+  </metadata>
+</package>

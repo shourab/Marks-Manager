@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @RenderSection("style", required: false)
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+               
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Save New Registration", "NewRegistrationSave", "NewRegistration")</li>
+                    <li>@Html.ActionLink("Save SelfStudy Registration", "SelfStudyRegistration", "NewRegistration")</li>
+                    <li>@Html.ActionLink("Save Backlog Registration", "BacklogRegistration", "NewRegistration")</li>
+
+
+                    <li>@Html.ActionLink("Save New Course", "SaveCourse", "Course")</li>
+                    <li>@Html.ActionLink("Save Enroll Course", "EnrollCourseSave", "Course")</li>
+
+                    
+                    <li>@Html.ActionLink("Show Student Information", "ShowStudentInformation", "ShowAllStudentInformation")</li>
+                    <li>@Html.ActionLink("Show Enroll Course Information", "ShowStudentEnrollCourseInformation", "ShowAllStudentInformation")</li>
+                    <li>@Html.ActionLink("Show Self Study Subject", "ShowSelfStudyRegistration", "ShowAllStudentInformation")</li>
+                    <li>@Html.ActionLink("Show Backlog Subject", "ShowBacklogRegistration", "ShowAllStudentInformation")</li>
+                    <li>@Html.ActionLink("Student in a Course", "ShowStudentRegistrationinParticularCourse", "ShowAllStudentInformation")</li>
+
+                    <li>@Html.ActionLink("Input CT Marks", "SearchStudent", "ResultInputsrb")</li>
+                    <li>@Html.ActionLink("See Batchwise Result", "AllstudentResult", "GetStudentMarkssrb")</li>
+                    <li>@Html.ActionLink("Individual Studdent Result", "IndividulaResult", "GetStudentMarkssrb")</li>
+                  
+
+
+                </ul>
+               
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+    
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

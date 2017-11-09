@@ -1,0 +1,52 @@
+﻿@using StudentResultHistoryFinder.Models
+
+
+
+@{
+    List<Coursesrb> courses = ViewBag.courses;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>SearchStudent</title>
+</head>
+<body>
+    <br>
+    <br>
+    <br>
+<br>
+<br>
+    <br>
+<div>
+    <form action="/ResultInputsrb/Students">
+        Batch:<br>
+        <input type="text" name="batch">
+        <br>
+        Courseid:<br>
+        <select name="courseid">
+
+            @{
+                foreach (var course in courses)
+                {
+                    <option value="@course.courseid">@course.coursecode</option>
+                }
+            }
+        </select>
+        <br/>
+        <br/>
+        <select name="Marksfor">
+            <option value="CT1">CT-1</option>
+            <option value="CT2">CT-2</option>
+            <option value="CT3">CT-3</option>
+            <option value="CT4">CT-4</option>
+            <option value="Attendence">Attandance</option>
+        </select>
+        <br><br>
+        <input type="submit" value="Submit">
+    </form>
+</div>
+</body>
+</html>

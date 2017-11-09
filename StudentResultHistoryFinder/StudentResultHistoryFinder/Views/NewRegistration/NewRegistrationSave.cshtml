@@ -1,0 +1,156 @@
+﻿
+
+@using StudentResultHistoryFinder.Models
+@model StudentInformation
+@{
+    ViewBag.Title = "NewRegistrationSave";
+
+    List<StudentInformation> bloodGroups = ViewBag.bloodGroups;
+
+    string msg = ViewBag.Message;
+}
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width"/>
+    <title>NewRegistrationSave</title>
+
+    <link href="~/Content/bootstrap.css" rel="stylesheet"/>
+    <style>
+        label.error {
+            color: red;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+    <br><br><br><br><br>
+<div>
+
+
+    <form class="form-horizontal" method="POST" id="saveStudentInformationForm">
+
+        <fieldset>
+            <legend align="center">Student Registration</legend>
+
+            <div class="form-group">
+                <label for="StudentName" class="col-sm-2 control-label">Student Name</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="StudentName" name="StudentName" placeholder="Student Name">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="StudentId" class="col-sm-2 control-label">Student Id</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="StudentId" name="StudentId" placeholder="Student Id">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="StudentEmail" class="col-sm-2 control-label">Student Email</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="StudentEmail" name="StudentEmail" placeholder="Student Email">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="BloodGroup" class="col-sm-2 control-label">Select Blood Group</label>
+                <div class="col-sm-10">
+                    <select class="form-control" id="BloodGroup" name="BloodGroup">
+                        <option value="">--Select--</option>
+                        @foreach (var bloodGroup in bloodGroups)
+                        {
+                            <option value="@bloodGroup.BloodGroup">@bloodGroup.BloodGroup</option>
+                        }
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-default">Save</button>
+                </div>
+            </div>
+
+        </fieldset>
+
+
+
+        @if (msg != null)
+        {
+            if (msg.StartsWith("The"))
+            {
+                <div class="form-group">
+                    <label for="saveStudentInformationForm" class="col-sm-offset-3 col-sm-3 control-label label-danger">@ViewBag.Message</label>
+                </div>
+            }
+
+            else if (msg.StartsWith("Email"))
+            {
+                <div class="form-group">
+                    <label for="saveStudentInformationForm" class="col-sm-offset-3 col-sm-3 control-label label-danger">@ViewBag.Message</label>
+                </div>
+            }
+
+            else if (msg.StartsWith("Student"))
+            {
+                <div class="form-group">
+                    <label for="saveStudentInformationForm" class="col-sm-offset-3 col-sm-3 control-label label-success">@ViewBag.Message</label>
+                </div>
+            }
+
+            else
+            {
+                <div class="form-group">
+                    <label for="saveStudentInformationForm" class="col-sm-offset-3 col-sm-3 control-label label-danger">@ViewBag.Message</label>
+                </div>
+            }
+        }
+
+
+
+    </form>
+</div>
+
+</body>
+
+</html>
+
+@section scripts
+{
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#saveStudentInformationForm").validate({
+                rules: {
+                    StudentName: "required",
+                    StudentId: "required",
+                    StudentEmail: "required",
+                    BloodGroup: "required"
+
+                },
+                messages: {
+                    StudentName: "Please Provide Student Name",
+                    StudentId: "Please Provide Student Id",
+                    StudentEmail: "Please Provide Student Email",
+                    BloodGroup: "Please Provide Blood Group"
+
+                }
+            });
+        });
+    </script>
+}
+

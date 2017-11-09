@@ -1,0 +1,98 @@
+﻿@using StudentResultHistoryFinder.Models
+
+
+@{
+    List<Coursesrb> courses = ViewBag.courses;
+    StudentMarks aMarks = ViewBag.marks;
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>IndividulaResult</title>
+</head>
+<body>
+    <br>
+    <br>
+    <br>
+<br>
+<br>
+    <br>
+<div>
+    <form>
+        StudentID:<br>
+        <input type="text" name="StudentId"><br/>
+        Courseid:<br>
+        <select name="courseID">
+            <option>--Select---</option>
+            @{
+                foreach (var course in courses)
+                {
+                    <option value="@course.courseid">@course.coursecode</option>
+                }
+            }
+        </select><br/><br/>
+        <input type="submit" value="Submit">
+    </form><br/>
+    @if (ViewBag.marks != null)
+    {
+        <table border="1">
+            <thead>
+            <td>
+                CT1
+            </td> <td>
+                CT2
+            </td> <td>
+                CT3
+            </td> <td>
+                CT4
+            </td> <td>
+                Attendance
+            </td>
+            <td>Best3</td>
+            </thead>
+            <tr>
+                <td>@aMarks.CT1</td>
+                <td>@aMarks.CT2</td>
+                <td>@aMarks.CT3</td>
+                <td>@aMarks.CT4</td>
+                <td>@aMarks.Attendance</td>
+                <td>
+                    @{
+                        int ct1 = Convert.ToInt32(aMarks.CT1);
+                        int ct2 = Convert.ToInt32(aMarks.CT2);
+                        int ct3 = Convert.ToInt32(aMarks.CT3);
+                        int ct4 = Convert.ToInt32(aMarks.CT4);
+                        int best3 = 0;
+                        int worest;
+                        if (ct1 < ct2 && ct1 < ct3 && ct1 < ct4)
+                        {
+                            best3 = ct2 + ct2 + ct3;
+                        }
+                        if (ct2 < ct1 && ct2 < ct3 && ct2 < ct4)
+                        {
+                            best3 = ct1 + ct3 + ct4;
+                        }
+                        if (ct3 < ct1 && ct3 < ct2 && ct3 < ct4)
+                        {
+                            best3 = ct1 + ct2 + ct4;
+                        }
+                        if (ct4 < ct1 && ct4 < ct2 && ct4 < ct3)
+                        {
+                            best3 = ct1 + ct2 + ct3 + ct4;
+                        }
+
+
+                    }
+                    @best3
+                </td>
+            </tr>
+
+        </table>
+    }
+</div>
+</body>
+</html>
